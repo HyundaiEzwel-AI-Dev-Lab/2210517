@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn *)",
+      "Bash(springboot\\mvnw.cmd *)",
+      "Bash(./mvnw.cmd *)",
+      "Bash(mvnw.cmd *)",
+      "Bash(netstat *)",
+      "Bash(taskkill *)",
+      "Bash(curl *)",
+      "Bash(psql *)",
+      "Bash(\\\")",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git *)"
+    ]
+  },
+  "$version": 4
+}

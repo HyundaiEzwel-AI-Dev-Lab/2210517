@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전사 프로젝트 관리 시스템 - 기본 레이아웃</title>
+    <style>
+        /* 기본 여백 초기화 및 기본 폰트 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* 화면 전체를 flex 구조로 나누어 좌측 사이드바와 우측 본문 배정 */
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f8f9fa; /* 밝고 깨끗한 배경색 */
+            color: #333333;
+        }
+
+        /* ==========================================
+           [1] 좌측 사이드바 영역 (메인 메뉴틀)
+        ========================================== */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff; /* 흰색 바탕의 정돈된 사이드바 */
+            border-right: 1px solid #e9ecef;
+            padding: 24px 0;
+            flex-shrink: 0; /* 사이드바 너비 고정 */
+        }
+
+        /* 시스템 로고 */
+        .sidebar .logo {
+            padding: 0 24px 24px 24px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1c7ed6; /* 포인트 블루 컬러 */
+            letter-spacing: -0.5px;
+        }
+
+        /* 대분류 메뉴 그룹 */
+        .menu-group {
+            margin-bottom: 20px;
+        }
+
+        /* 대분류 텍스트 타이틀 */
+        .menu-title {
+            padding: 8px 24px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #adb5bd;
+            text-transform: uppercase;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        /* 일반 메뉴 아이템 */
+        .menu-item a {
+            display: block;
+            padding: 10px 24px;
+            color: #495057;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .menu-item a:hover {
+            background-color: #f1f3f5;
+        }
+
+        /* ★ 요청사항: 대시보드 밑에 리스트 형태로 들어가는 하위 메뉴 */
+        .sub-menu-list {
+            list-style: none;
+            background-color: #fcfcfc;
+        }
+
+        .sub-menu-item a {
+            display: block;
+            padding: 10px 24px 10px 36px; /* 왼쪽 여백을 더 주어 들여쓰기 시각화 */
+            font-size: 13px;
+            color: #495057;
+            text-decoration: none;
+        }
+
+        /* 하위 메뉴 중 현재 페이지(활성화 상태) 스타일 정의 */
+        .sub-menu-item.active a {
+            color: #1c7ed6;
+            background-color: #e7f5ff;
+            font-weight: 600;
+        }
+
+
+        /* ==========================================
+           [2] 우측 메인 콘텐츠 영역 (내용이 들어갈 틀)
+        ========================================== */
+        .main-content {
+            flex-grow: 1; /* 남은 여백을 모두 차지 */
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        /* 상단 헤더 (타이틀 및 토글 버튼 들어갈 공간) */
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .content-header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #212529;
+        }
+
+        /* 실제 콘텐츠 배치 영역 구획 */
+        .content-body {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            padding: 30px;
+            min-height: 400px;
+            text-align: center;
+            color: #868e96;
+            line-height: 400px; /* 안내 문구를 가운데 정렬하기 위함 */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="logo">Project PMS</div>
+        
+        <div class="menu-group">
+            <div class="menu-title">통합 관리</div>
+            <ul class="menu-list">
+                <li class="menu-item"><a href="#none">프로젝트 등록</a></li>
+                <li class="menu-item"><a href="#none">프로젝트 현황</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <div class="menu-title">대시보드</div>
+            <ul class="sub-menu-list">
+                <li class="sub-menu-item active"><a href="#none">메인 대시보드</a></li>
+                <li class="sub-menu-item"><a href="#none">실적관리</a></li>
+                <li class="sub-menu-item"><a href="#none">테크 리소스 관리</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <div class="menu-title">시스템 관리</div>
+            <ul class="menu-list">
+                <li class="menu-item"><a href="#none">사용자 관리</a></li>
+                <li class="menu-item"><a href="#none">공통코드 관리</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="content-header">
+            <h1>메인 대시보드</h1>
+            <div>[토글 버튼 영역]</div>
+        </header>
+
+        <section class="content-body">
+            이 영역에 카드형태의 콘텐츠들이 정렬될 예정입니다.
+        </section>
+    </main>
+
+</body>
+</html>

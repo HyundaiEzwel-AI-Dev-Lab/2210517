@@ -1,0 +1,5 @@
+model: ollama/qwen2.5-coder
+# 자동으로 항상 추가해둘 파일/폴더 지정
+autofiles:
+  - vue/src/
+  - springboot/src/

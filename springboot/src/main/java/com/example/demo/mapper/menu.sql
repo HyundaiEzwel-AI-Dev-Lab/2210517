@@ -1,0 +1,27 @@
+WITH RECURSIVE menu_tree AS (
+    SELECT 
+        menu_id, 
+        menu_name, 
+        parent_id, 
+        menu_depth, 
+        sort_order, 
+        url_path, 
+        CAST(sort_order AS TEXT) as order_path
+    FROM public.side_menu
+    WHERE parent_id IS NULL AND use_yn = 'Y'
+    UNION ALL
+    SELECT 
+        m.menu_id, 
+        m.menu_name, 
+        m.parent_id, 
+        m.menu_depth, 
+        m.sort_order, 
+        m.url_path, 
+        CONCAT(t.order_path, '-', m.sort_order)
+    FROM public.side_menu m
+    INNER JOIN menu_tree t ON m.parent_id = t.menu_id
+    WHERE m.use_yn = 'Y'
+)
+SELECT menu_id, menu_name, parent_id, menu_depth, url_path 
+FROM menu_tree 
+ORDER BY order_path;
